@@ -14,6 +14,11 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 @Entity
 @Table(name = "tb_categoria")
 public class Categoria {
@@ -31,6 +36,8 @@ public class Categoria {
 	@NotNull
 	@Size(min = 5, max = 140, message = "min= 5, max= 140")
 	private String descricao;
+	
+	// um para muitos :
 	
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("categoria")
